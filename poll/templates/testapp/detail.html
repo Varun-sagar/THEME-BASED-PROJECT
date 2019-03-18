@@ -1,0 +1,27 @@
+{% extends 'testapp/base.html' %}
+
+
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<h1>{{ question.Question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'testapp:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.cho_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+{% endfor %}
+<input type="submit" value="Vote">
+</form>
+
+{% endblock %}

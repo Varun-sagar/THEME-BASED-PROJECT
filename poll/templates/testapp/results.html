@@ -1,0 +1,19 @@
+{% extends 'testapp/base.html' %}
+
+
+{% block content %}
+{% if error %}
+    <h1> Error!</h1>
+
+{% else %}
+
+   {% for x in poll.cho_set.all %}
+           <ul>
+
+               <li>   {{x}}  ---  {{x.votes}} </li>
+
+           </ul>
+   {% endfor %}
+{% endif %}
+{% endblock %}
+
