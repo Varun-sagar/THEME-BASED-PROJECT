@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<h1>Hi man!"{{date}} <br>  {{hour}}</h1>
+<img src="{% static "images/Capture123.JPG" %}">
+<h1> Employess Information</h1>
+{% if employee %}
+<table border="2">
+  <tr>
+      <th> eid</th>
+   <th> eno</th>
+     <th> ename</th>
+    <th> esal </th>
+     <th>erole</th>
+  </tr>
+      {% for e in employee %}
+     <tr>
+         <td> {{e.id}}</td>
+         <td>{{e.eno }}</td>
+         <td> {{ e.ename }}</td>
+         <td>{{ e.esal }}</td>
+         <td>{{ e.erole }} </td>
+     </tr>
+
+    {% endfor %}
+</table>
+  {% else %}
+    <h1> There is no data in tables</h1>
+
+{% endif %}
+</body>
+
+</html>

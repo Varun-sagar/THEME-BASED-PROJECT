@@ -1,0 +1,17 @@
+{% extends 'testapp/base.html' %}
+
+
+
+{% block content %}
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'testapp:detail' question.id %}" >{{ question.Question_text }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p> No polls are available.</p>
+{% endif %}
+
+{% endblock %}
+

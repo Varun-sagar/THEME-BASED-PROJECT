@@ -1,0 +1,55 @@
+{% extends 'testapp/base.html' %}
+
+
+{% block content %}
+
+
+
+
+<h2>Select the category</h2>
+
+<form action="{% url 'accounts:register'%}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+
+
+    {% if gender == 1  %}
+    <input type="radio" id="cool" name="gender"  checked  value="male" onclick="this.form.submit()"> Male
+        <input type="radio"  name="gender" value="female" onclick="this.form.submit()"> Female
+
+    {%elif gender == 0 %}
+            <input type="radio" id="cool" name="gender"   value="male" onclick="this.form.submit()"> Male
+
+    <input type="radio"  name="gender"  checked value="female" onclick="this.form.submit()"> Female
+
+    {% endif %}
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+{% if form %}
+<form action=" {% url 'accounts:register' %} " method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" >
+</form>
+
+{% endif %}
+
+
+<p> {{gender}}</p>
+
+
+<p> {{errors}} </p>
+
+
+
+{% endblock content %}
